@@ -25,10 +25,13 @@
         function setup(){
             createCanvas(w,h);
             //player = new player();
+            fireball = loadImage("fireball1.png");
         }
 
 
         function draw(){
+            clear();
+            image(fireball,mouseX,mouseY,100,60)
             //WHEN SOMEONE PRESSES THE SPACEBAR
             if(keyIsDown(32)){
             //PLAY THE BOING SOUND
