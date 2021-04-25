@@ -1,0 +1,225 @@
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js"></script>
+        <script defer src="https://unpkg.com/p5.collide2d"></script>
+        <style>
+            body{
+                width:100%;
+                height: 100%;
+                margin: 0px;
+                border: 0;
+                overflow: hidden;
+                display:block;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            var w = window.innerWidth;
+            var h = window.innerHeight;
+            var x = w/2;
+            var y = h/2;
+            //declare the name of the object
+            var bigblock;
+            var bigblock2
+            //Declare a timer
+            var timer = 0;
+            var playerr1;
+            //var coin;
+
+        function setup(){
+            createCanvas(w,h);
+            //load the object
+            var timer = 0;
+            playerr1 = new playerr1();
+            bigblock = new bigblock();
+            bigblock2 = new bigblock2();
+            bigblock3 = new bigblock3();
+            bigblock4 = new bigblock4();
+            //coin = new coin();
+        }
+var hit = false;
+var hit2 = false;
+var hit3 = false;
+var hit4 = false;
+var hit5 = false;
+function draw() {
+    clear()
+    playerr1.show()
+    playerr1.update()
+    bigblock.show()
+    bigblock.update()
+    bigblock2.show()
+    bigblock2.update()
+    bigblock3.show()
+    bigblock3.update()
+    bigblock4.show()
+    bigblock4.update()
+    //coin.show()
+    //coin.update()
+    
+    
+    hit = collideRectCircle(bigblock.x, bigblock.y,bigblock.width,bigblock.height, playerr1.x,playerr1.y,playerr1.diam)
+    hit2 = collideRectCircle(bigblock2.x, bigblock2.y,bigblock2.width,bigblock2.height, playerr1.x,playerr1.y,playerr1.diam)
+    hit3 = collideRectCircle(bigblock3.x, bigblock3.y,bigblock3.width,bigblock3.height, playerr1.x,playerr1.y,playerr1.diam)
+    hit4 = collideRectCircle(bigblock4.x, bigblock4.y,bigblock4.width,bigblock4.height, playerr1.x,playerr1.y,playerr1.diam)
+        
+
+       if (hit==true||hit2==true||hit3==true||hit4==true){
+        timer = 0;
+        window.alert("dead")
+        playerr1.x = w/2
+        playerr1.y = h/2
+        noLoop()
+        console.log(hit)
+        console.log(hit2)
+        console.log(hit3)
+        console.log(hit4)  
+       }
+       if(millis() >= 1 + timer){
+                timer = millis();
+                document.getElementById("timer1").innerHTML = (timer/1000).toFixed(0) + " seconds"
+                }
+       /*if (hit5=true){
+        coin++
+       }*/
+
+    }
+    
+    function playerr1(){
+        this.x = w/2
+        this.y = h/2
+        this.width = 50;
+        this.height = 50;
+        this.diam = 80;
+        this.show = function(){
+            /*imagething = loadImage("imagething.png")*/
+            fill(color("red"));
+            circle(this.x,this.y,this.diam);
+            //rectMode(CENTER)
+        }
+        this.update = function(){
+        //up
+        if(keyIsDown(87)&&(this.y > 0)){
+               this.y = this.y -= 10
+            }
+
+            //down
+            if(keyIsDown(83)&&(this.y<h-70)){
+              this.y = this.y += 10
+            }
+            //left
+            if(keyIsDown(65)&&(this.x > 0)){
+              this.x = this.x -= 10
+            }
+            //right
+
+            if(keyIsDown(68)&&(this.x<w-50)){
+              this.x = this.x += 10
+            }
+        }
+
+}
+    function bigblock(){
+        this.width = 20
+        this.height = 40
+        this.x = 50;
+        this.y = 0-100;
+       
+            //this function is kind of like the setup for this object
+            this.show = function(){
+                fill(color('blue'));
+                rect(this.x,this.y,this.width,this.height);
+            }
+            this.update = function(){
+                this.y = this.y + 13
+                if (this.y > h-10){
+                this.x = random(50,w-50);
+                this.y = 0;
+                }
+                
+             
+    } 
+}
+
+    function bigblock2(){
+        this.width = 40
+        this.height = 20
+        this.x = 0
+        this.y = random(50,h-this.height)
+        this.show = function(){
+            fill(color('blue'));
+            rect(this.x,this.y,this.width,this.height);
+        }
+        this.update = function(){
+            this.x = this.x + 16
+            if (this.x>w){
+                this.y = random(50,h-this.height)
+                this.x = 0
+            }
+        }
+    }
+    function bigblock3(){
+        this.width = 40
+        this.height = 20
+        this.x = 0
+        this.y = random(50,h-this.height)
+        this.show = function(){
+            fill(color('blue'));
+            rect(this.x,this.y,this.width,this.height);
+        }
+        this.update = function(){
+            this.x = this.x + 16
+            if (this.x>w){
+                this.y = random(50,h-this.height)
+                this.x = 0
+            }
+        }
+    }
+ function bigblock4(){
+        this.width = 20
+        this.height = 40
+        this.x = (2*w)/3;
+        this.y = 0-100;
+       
+            //this function is kind of like the setup for this object
+            this.show = function(){
+                fill(color('blue'));
+                rect(this.x,this.y,this.width,this.height);
+            }
+            this.update = function(){
+                this.y = this.y + 13
+                if (this.y > h-10){
+                this.x = random(50,w-50);
+                this.y = 0;
+                }
+                
+             
+    } 
+}
+/*function coin(){
+        this.width = 50
+        this.height = 50
+        this.x = (2*w)/3;
+        this.y = 0;
+       
+            //this function is kind of like the setup for this object
+ this.show = function(){
+                fill(color('yellow'));
+                rect(this.x,this.y,this.width,this.height);
+            }
+            this.update = function(){
+                this.x += random(-10,10)
+                this.y += random(-10,10)
+                }
+                
+             
+    } */
+
+
+
+        </script>
+        <h1 id="timer1">0</h1>
+    </body>
+   
+</html>
