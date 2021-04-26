@@ -39,7 +39,6 @@
             bigblock3 = new bigblock3();
             bigblock4 = new bigblock4();
             bigblock5 = new bigblock5();
-            window.alert("Survive as long as possible.")
             var timer = 0;
             //coin = new coin();
         }
@@ -75,7 +74,7 @@ function draw() {
 
        if(millis() >= 1 + timer){
                 timer = millis();
-                document.getElementById("timer1").innerHTML = "You have survived for "+(timer/1000).toFixed(0) + " seconds"
+                document.getElementById("timer1").innerHTML = "Survive as long as possible. You have survived for "+(timer/1000).toFixed(0) + " seconds"
                 }
         if (hit==true||hit2==true||hit3==true||hit4==true||hit5==true){
         timer = 0;
