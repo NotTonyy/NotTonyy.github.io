@@ -65,11 +65,11 @@ function draw() {
     //coin.update()
     
     
-    hit = collideRectCircle(bigblock.x, bigblock.y,bigblock.width,bigblock.height, playerr1.x,playerr1.y,playerr1.diam)
-    hit2 = collideRectCircle(bigblock2.x, bigblock2.y,bigblock2.width,bigblock2.height, playerr1.x,playerr1.y,playerr1.diam)
-    hit3 = collideRectCircle(bigblock3.x, bigblock3.y,bigblock3.width,bigblock3.height, playerr1.x,playerr1.y,playerr1.diam)
-    hit4 = collideRectCircle(bigblock4.x, bigblock4.y,bigblock4.width,bigblock4.height, playerr1.x,playerr1.y,playerr1.diam)
-    hit5 = collideRectCircle(bigblock5.x, bigblock5.y,bigblock5.width,bigblock5.height, playerr1.x,playerr1.y,playerr1.diam)    
+    hit = collideRectCircle(bigblock.x, bigblock.y,bigblock.width,bigblock.height, playerr1.x,playerr1.y,(playerr1.diam - (playerr1.diam/2)))
+    hit2 = collideRectCircle(bigblock2.x, bigblock2.y,bigblock2.width,bigblock2.height, playerr1.x,playerr1.y,(playerr1.diam - (playerr1.diam/2)))
+    hit3 = collideRectCircle(bigblock3.x, bigblock3.y,bigblock3.width,bigblock3.height, playerr1.x,playerr1.y,(playerr1.diam - (playerr1.diam/2)))
+    hit4 = collideRectCircle(bigblock4.x, bigblock4.y,bigblock4.width,bigblock4.height, playerr1.x,playerr1.y,(playerr1.diam - (playerr1.diam/2)))
+    hit5 = collideRectCircle(bigblock5.x, bigblock5.y,bigblock5.width,bigblock5.height, playerr1.x,playerr1.y,(playerr1.diam - (playerr1.diam/2)))    
 
 
        if(millis() >= 1 + timer){
